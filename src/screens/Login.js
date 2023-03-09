@@ -1,33 +1,20 @@
-import { useState } from "react";
-import styled, { css } from "styled-components";
-import { isLoggedInVar } from "../apollo";
+import styled from "styled-components";
+import { darkModeVar } from "../apollo";
 
 const Title = styled.h1`
-  color: ${(props) => (props.potato ? "palevioletred" : "beige")};
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  ${(props) =>
-    props.potato
-      ? css`
-          font-size: 49px;
-        `
-      : css`
-          text-decoration: underline;
-        `}
+  color: ${(props) => props.theme.fontColor};
 `;
 
 const ToggleColor = styled.button`
-  color: red;
+  background-color: ${(props) => props.theme.bgColor};
 `;
 
 export const Login = () => {
-  const [potato, setPotato] = useState(false);
-  const togglePotato = () => setPotato((current) => !current);
   return (
     <div>
-      <Title potato={potato}>Login</Title>
-      <button onClick={() => isLoggedInVar(true)}>Login Now!!</button>
-      <ToggleColor onClick={togglePotato}>Toggle Potato</ToggleColor>
+      <Title>Login</Title>
+      <ToggleColor onClick={() => darkModeVar(true)}>To dark</ToggleColor>
+      <ToggleColor onClick={() => darkModeVar(false)}>To White</ToggleColor>
     </div>
   );
 };
