@@ -1,5 +1,6 @@
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 import AuthLayout from "../components/auth/AuthLayout";
 import BottomBox from "../components/auth/BottomBox";
@@ -24,6 +25,9 @@ const Subtitle = styled(FatLink)`
 export const SignUp = () => {
   return (
     <AuthLayout>
+      <Helmet>
+        <title>Sign-Up | Instaclone</title>
+      </Helmet>
       <FormBox>
         <HeaderContainer>
           <FontAwesomeIcon icon={faInstagram} size="3x" />

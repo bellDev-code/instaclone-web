@@ -3,7 +3,6 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import styled from "styled-components";
 import AuthLayout from "../components/auth/AuthLayout";
 import BottomBox from "../components/auth/BottomBox";
@@ -11,6 +10,7 @@ import Button from "../components/auth/Button";
 import FormBox from "../components/auth/FormBox";
 import Input from "../components/auth/Input";
 import Separator from "../components/auth/Seperator";
+import PageTitle from "../components/PageTitle";
 import routes from "../routes";
 
 const FacebookLogin = styled.div`
@@ -22,39 +22,15 @@ const FacebookLogin = styled.div`
 `;
 
 export const Login = () => {
-  const [username, setUsername] = useState("");
-  const [usernameError, setUsernameError] = useState("");
-
-  const onChangeUsername = (e) => {
-    setUsernameError("");
-    setUsername(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (username === "") {
-      setUsernameError("username은 1글자 이상 10글자 이하로 해주세요.");
-    }
-
-    if (username.length < 10) {
-      usernameError("username은 10글자 이하로 해주세요.");
-    }
-  };
   return (
     <AuthLayout>
+      <PageTitle title="Login" />
       <FormBox>
         <div>
           <FontAwesomeIcon icon={faInstagram} size="3x" />
         </div>
-        <form onSubmit={handleSubmit}>
-          {usernameError}
-          <Input
-            onChange={onChangeUsername}
-            value={username}
-            type="text"
-            placeholder="Username"
-          />
+        <form>
+          <Input type="text" placeholder="Username" />
           <Input type="password" placeholder="Password" />
           <Button type="submit" value="Log in" />
         </form>
