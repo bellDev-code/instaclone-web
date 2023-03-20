@@ -52,7 +52,7 @@ export const SignUp = () => {
   const onCompleted = (data) => {
     const { username, password } = getValues();
     const {
-      createAccount: { ok, error },
+      createAccount: { ok },
     } = data;
 
     if (!ok) {
