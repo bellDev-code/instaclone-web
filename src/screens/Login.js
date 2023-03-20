@@ -66,7 +66,7 @@ export const Login = () => {
     onCompleted,
   });
 
-  const onSubmitValid = (data) => {
+  const onSubmitValid = () => {
     if (loading) {
       return;
     }
