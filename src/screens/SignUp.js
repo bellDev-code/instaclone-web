@@ -50,6 +50,7 @@ const CREATE_ACCOUNT_MUTATION = gql`
 export const SignUp = () => {
   const history = useHistory();
   const onCompleted = (data) => {
+    const { username, password } = getValues();
     const {
       createAccount: { ok, error },
     } = data;
@@ -57,12 +58,17 @@ export const SignUp = () => {
     if (!ok) {
       return;
     }
-    history.push(routes.home);
+
+    history.push(routes.home, {
+      message: "회원가입을 완료했습니다. 로그인 해주세요.",
+      username,
+      password,
+    });
   };
   const [createAccount, { loading }] = useMutation(CREATE_ACCOUNT_MUTATION, {
     onCompleted,
   });
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState, getValues } = useForm({
     mode: "onChange",
   });
 
